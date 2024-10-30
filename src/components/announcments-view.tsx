@@ -1,5 +1,4 @@
-import { type BlogPost, getAllPosts } from "@/actions/blog";
-import { cn, formatDate } from "@/utils";
+import { cn } from "@/utils";
 import type { PropsWithClassName } from "@/types/domain/props-with-class-name";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon, LinkIcon } from "@/icons";
@@ -10,12 +9,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { getPaginatedPosts } from "@/actions/cache";
+import type { Post } from "@/actions/types/post";
+import { getResourceUrl } from "@/lib/get-resource-url";
 
 export const AnnouncementsView = async () => {
-  const posts = getAllPosts({
-    itemsPerPage: 9,
-    page: 1,
-  });
+  const posts = await getPaginatedPosts({ page: 1, pageSize: 9 });
   return (
     <Carousel className={"flex flex-col size-full"}>
       <section
@@ -65,8 +64,11 @@ export const AnnouncementsView = async () => {
         </div>
         <CarouselContent className={"size-full grow"}>
           {Array.from({ length: 2 }).map((_, i) => (
+            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>s
             <CarouselItem key={i} className={"size-full"}>
-              <AnnouncementSection posts={posts.slice(i * 3, (i + 1) * 3)} />
+              <AnnouncementSection
+                posts={posts.items.slice(i * 3, (i + 1) * 3)}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -76,7 +78,7 @@ export const AnnouncementsView = async () => {
 };
 
 type AnnouncementSectionProps = {
-  posts: BlogPost[];
+  posts: Post[];
 };
 const AnnouncementSection = ({ posts }: AnnouncementSectionProps) => {
   return (
@@ -96,26 +98,30 @@ const AnnouncementSection = ({ posts }: AnnouncementSectionProps) => {
 };
 
 const AnnouncementCard = ({
-  metadata,
+  thumbnail,
+  title,
   className,
-}: PropsWithClassName<BlogPost>) => {
+  id,
+  collectionId,
+  summary,
+}: PropsWithClassName<Post>) => {
   return (
     <div className={cn("flex flex-col gap-4 h-full p-4", className)}>
       <div className={"relative w-full grow"}>
         <img
-          src={metadata.image}
-          alt={metadata.title}
+          src={getResourceUrl(thumbnail, id, collectionId)}
+          alt={title}
           className={
             "object-contain object-cover rounded-xl absolute size-full inset-0"
           }
         />
       </div>
       <div className={"h-20"}>
-        <p className="font-medium text-2xl tracking-tight line-clamp-1">{metadata.title}</p>
-        <p className="h-6 text-muted-foreground text-xs">
-          {formatDate(metadata.publishedAt)}
+        <p className="font-medium text-2xl tracking-tight line-clamp-1">
+          {title}
         </p>
-        <p className="h-6 text-muted-foreground text-xs">{metadata.summary}</p>
+        {/*<p className="h-6 text-muted-foreground text-xs">{format(created, "dd MMM yyyy")}</p>*/}
+        <p className="h-6 text-muted-foreground text-xs">{summary}</p>
       </div>
     </div>
   );

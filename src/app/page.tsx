@@ -4,9 +4,19 @@ import { PartnerCarousel } from "@/components/partner-carousel";
 import { StatisticsStrip } from "@/components/statistics-strip";
 import { SplineScene } from "@/components/spline-scene";
 import { AnnouncementsView } from "@/components/announcments-view";
-import { type UpcomingEvent, UpcomingEvents } from "@/components/upcoming-events";
+import {
+  type UpcomingEvent,
+  UpcomingEvents,
+} from "@/components/upcoming-events";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { getPaginatedResources } from "@/actions/cache";
 
-export default () => {
+export default async () => {
+  const resources = await getPaginatedResources();
   return (
     <section
       className={"scrollbar size-full overflow-y-auto overflow-x-hidden"}
@@ -58,13 +68,21 @@ export default () => {
             </div>
           }
         >
-          <Image
-            src={"/images/school-1.jpg"}
-            alt={"gradient"}
-            className={"size-full"}
-            width={1920}
-            height={1080}
-          />
+          <Carousel>
+            <CarouselContent className={"relative *:ml-0"}>
+              {resources.items.map(({ id, collectionId, resource }) => (
+                <CarouselItem className={"size-full p-0"} key={id}>
+                  <Image
+                    src={`http://127.0.0.1:8090/api/files/${collectionId}/${id}/${resource}`}
+                    alt={"gradient"}
+                    className={"size-full"}
+                    width={1920}
+                    height={1080}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </BannerAnimation>
       </section>
       <section
