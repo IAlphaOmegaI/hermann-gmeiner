@@ -8,8 +8,8 @@ import {
   navigationMenuTriggerVariants,
 } from "@/components/ui/navigation-menu";
 import { HomeIcon } from "@/icons";
-import type { Route } from "@/types";
-import type { PropsWithClassName } from "@/types/domain/props-with-class-name";
+import type { Route } from "@/types/navigation";
+import type { PropsWithClassName } from "@/types/components";
 import { cn } from "@/utils";
 import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
 import Link from "next/link";

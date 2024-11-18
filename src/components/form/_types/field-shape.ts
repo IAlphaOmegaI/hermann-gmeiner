@@ -1,6 +1,7 @@
-import type { Props, Tuple } from "@/types";
 import { z } from "zod";
 import type { RefinedFieldProps } from "./refined-field-props";
+import {Tuple} from "@/types/utilities";
+import {Props} from "@/types/components";
 
 type ZodFile = z.ZodType<File, z.ZodTypeDef, File>;
 

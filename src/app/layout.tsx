@@ -1,15 +1,15 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/utils";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
-import type { Metadata } from "next";
+import {ThemeProvider} from "@/components/theme-provider";
+import {cn} from "@/utils";
+import {GeistMono} from "geist/font/mono";
+import {GeistSans} from "geist/font/sans";
+import type {Metadata} from "next";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
-import type { LayoutProps } from "@/types";
-import { ViewTransitions } from "next-view-transitions";
-import { NavigationMenu } from "@/components/navigation-menu";
-import dynamic from "next/dynamic";
+import {Toaster} from "@/components/ui/toaster";
+import type {LayoutProps} from "@/types/navigation";
+import {ViewTransitions} from "next-view-transitions";
+import {NavigationMenu} from "@/components/navigation-menu";
 import localFont from "next/font/local";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hermanngminer.edu.al"),
   title: {
@@ -55,31 +55,30 @@ const ClashDisplay = localFont({
   variable: "--font-clash-display",
 });
 
-
 export default ({ children }: LayoutProps) => {
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
-          <body
-            className={cn(
-              "bg-background",
-              GeistMono.variable,
-              GeistSans.variable,
-              ClashDisplay.variable,
-            )}
+        <body
+          className={cn(
+            "bg-background",
+            GeistMono.variable,
+            GeistSans.variable,
+            ClashDisplay.variable,
+          )}
+        >
+          <main
+            className={
+              "relative mx-auto h-screen min-h-screen w-screen font-sans antialiased"
+            }
           >
-            <main
-              className={
-                "relative mx-auto h-screen min-h-screen w-screen font-sans antialiased"
-              }
-            >
-              <ThemeProvider attribute="class" defaultTheme="light">
-                <NavigationMenu />
-                {children}
-                <Toaster />
-              </ThemeProvider>
-            </main>
-          </body>
+            <ThemeProvider attribute="class" defaultTheme="light">
+              <NavigationMenu />
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </main>
+        </body>
       </html>
     </ViewTransitions>
   );

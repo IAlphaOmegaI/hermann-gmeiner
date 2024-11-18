@@ -1,4 +1,3 @@
-import type { Override } from "@/types";
 import { cn } from "@/utils";
 import { type ControllerRenderProps, useFormContext } from "react-hook-form";
 import { z } from "zod";
@@ -29,6 +28,7 @@ import {
   FormLabel,
   FormMessage,
 } from "./form";
+import {Override} from "@/types/utilities";
 
 const splitCamelCase = (name: string) => name.split(/(?=[A-Z])/).join(" ");
 const INLINE_INPUTS = ["switch", "checkbox"];

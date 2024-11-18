@@ -1,9 +1,11 @@
 "use client";
 
-import type { ClassList, Icon } from "@/types";
+import type {  Icon } from "@/types/components";
 import { cn } from "@/utils";
+
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 import type { ComponentProps, Ref } from "react";
+import type {ClassList} from "@/types/domain";
 
 type ClassListKey = "thumb" | "root" | "icon";
 

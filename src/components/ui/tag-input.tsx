@@ -1,7 +1,7 @@
 "use client";
 
 import { XIcon } from "@/icons";
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import { useControllableState } from "@radix-ui/react-use-controllable-state";
 import * as CommandPrimitive from "cmdk";

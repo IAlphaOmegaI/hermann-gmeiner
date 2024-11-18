@@ -1,3 +1,5 @@
+import type { SearchParam } from "./search-param";
+
 export type SearchParams<T extends string> = {
-  [K in T]: string | string[] | undefined;
+  [P in T]: SearchParam;
 };

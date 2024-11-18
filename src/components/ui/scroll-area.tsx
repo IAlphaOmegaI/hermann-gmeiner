@@ -1,6 +1,6 @@
 "use client";
 
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import type { ComponentProps } from "react";

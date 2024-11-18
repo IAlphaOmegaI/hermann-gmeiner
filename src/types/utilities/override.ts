@@ -1,3 +1,4 @@
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type ObjectPlaceholder = Record<string, any>;
 
 export type Override<

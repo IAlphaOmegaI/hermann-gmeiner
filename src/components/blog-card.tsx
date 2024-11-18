@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Link } from "next-view-transitions";
 import type { Post } from "@/actions/types/post";
-import type { PropsWithClassName } from "@/types/domain/props-with-class-name";
+import type { PropsWithClassName } from "@/types/components";
 import { cn } from "@/utils";
 
 export const BlogCard = ({

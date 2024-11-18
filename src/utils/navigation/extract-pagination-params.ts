@@ -1,4 +1,4 @@
-import type { SearchParams } from "@/types";
+import type { SearchParams } from "@/types/navigation";
 import { parseSearchParams } from "@/utils";
 
 type PaginationParams = SearchParams<"pageSize" | "page">;

@@ -1,4 +1,4 @@
-import type { IconProps } from "@/types";
+import type { IconProps } from "@/types/components";
 
 export const CheckIcon = (props: IconProps) => (
   <svg

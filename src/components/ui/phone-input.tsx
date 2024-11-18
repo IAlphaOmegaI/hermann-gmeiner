@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from "@/icons";
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { type ChangeEvent, type ClipboardEvent, useRef, useState } from "react";

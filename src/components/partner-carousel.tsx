@@ -5,7 +5,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Image from "next/image";
-import type { PropsWithClassName } from "@/types/domain/props-with-class-name";
+import type { PropsWithClassName } from "@/types/components";
 import { cn } from "@/utils";
 import Autoplay from "embla-carousel-autoplay";
 

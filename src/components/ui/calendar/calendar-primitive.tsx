@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@/icons";
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import {
   addMonths,

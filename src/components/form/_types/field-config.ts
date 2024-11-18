@@ -1,5 +1,4 @@
 import type { RefinedFieldProps } from "@/components/form";
-import type { PartialFields, RequiredFields, Tuple } from "@/types";
 import type { z } from "zod";
 import type { CoreType } from "./core-type";
 import type {
@@ -8,6 +7,7 @@ import type {
   FieldShape,
   FieldShapePropsMap,
 } from "./field-shape";
+import type {PartialFields, RequiredFields, Tuple} from "@/types/utilities";
 
 export type FieldConfig = {
   shape: FieldShape;

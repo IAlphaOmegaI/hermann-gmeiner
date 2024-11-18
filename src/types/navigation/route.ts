@@ -1,11 +1,9 @@
-import type { Icon } from "@/types";
-import type { OneRequiredOf } from "@/types/utilities/one-required-of";
+import type { Icon } from "../components";
 
 export type Route = {
+  path?: string;
   label: string;
   Icon: Icon;
   description?: string;
-} & OneRequiredOf<{
-  path: string;
-  subRoutes: Route[];
-}>;
+  subRoutes?: Route[];
+};

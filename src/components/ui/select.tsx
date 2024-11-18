@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@/icons";
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { type VariantProps, cva } from "class-variance-authority";

@@ -12,7 +12,7 @@ import {
   useState,
 } from "react";
 import { cn } from "@/utils";
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/icons";
 

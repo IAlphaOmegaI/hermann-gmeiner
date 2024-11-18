@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckIcon } from "@/icons";
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import type { ComponentProps } from "react";

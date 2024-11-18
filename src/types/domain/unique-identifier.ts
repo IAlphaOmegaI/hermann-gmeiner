@@ -1,1 +1,1 @@
-export type UniqueIdentifier = string | number;
+export type UniqueIdentifier = number;

@@ -1,10 +1,10 @@
 import "../view-transitions.css";
-import { CustomMDX } from "@/components/mdx";
-import type { DynamicRouteProps } from "@/types";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import {CustomMDX} from "@/components/mdx";
+import type {DynamicRouteProps} from "@/types/navigation";
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
 import Script from "next/script";
-import { getAllPosts, getPostById } from "@/actions/cache";
+import {getAllPosts, getPostById} from "@/actions/cache";
 
 export const generateStaticParams = async () => {
   const posts = await getAllPosts();
@@ -16,7 +16,8 @@ export const generateStaticParams = async () => {
 export async function generateMetadata({
   params,
 }: DynamicRouteProps<"id">): Promise<Metadata | undefined> {
-  const post = await getPostById(params.id);
+  const { id } = await params;
+  const post = await getPostById(id);
   console.log(post);
 
   const {
@@ -54,7 +55,8 @@ export async function generateMetadata({
 }
 
 export default async ({ params }: DynamicRouteProps) => {
-  const post = await getPostById(params.id);
+  const { id } = await params;
+  const post = await getPostById(id);
   if (!post) notFound();
 
   return (

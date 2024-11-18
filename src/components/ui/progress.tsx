@@ -1,6 +1,6 @@
 "use client";
 
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import type { ComponentProps } from "react";

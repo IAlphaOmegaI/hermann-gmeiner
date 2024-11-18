@@ -1,5 +1,5 @@
 import { cn } from "@/utils";
-import type { PropsWithClassName } from "@/types/domain/props-with-class-name";
+import type { PropsWithClassName } from "@/types/components";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon, LinkIcon } from "@/icons";
 import {

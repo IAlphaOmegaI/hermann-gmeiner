@@ -1,6 +1,6 @@
 "use client";
 
-import type { ClassList } from "@/types";
+import type { ClassList } from "@/types/domain";
 import { cn } from "@/utils";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import type { ComponentProps, Ref } from "react";
