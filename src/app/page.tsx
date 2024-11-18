@@ -1,19 +1,13 @@
 import Image from "next/image";
-import { BannerAnimation } from "@/components/banner-animation";
-import { PartnerCarousel } from "@/components/partner-carousel";
-import { StatisticsStrip } from "@/components/statistics-strip";
-import { SplineScene } from "@/components/spline-scene";
-import { AnnouncementsView } from "@/components/announcments-view";
-import {
-  type UpcomingEvent,
-  UpcomingEvents,
-} from "@/components/upcoming-events";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import { getPaginatedResources } from "@/actions/cache";
+import {BannerAnimation} from "@/components/banner-animation";
+import {PartnerCarousel} from "@/components/partner-carousel";
+import {StatisticsStrip} from "@/components/statistics-strip";
+import {SplineScene} from "@/components/spline-scene";
+import {AnnouncementsView} from "@/components/announcments-view";
+import {type UpcomingEvent, UpcomingEvents,} from "@/components/upcoming-events";
+import {Carousel, CarouselContent, CarouselItem,} from "@/components/ui/carousel";
+import {getPaginatedResources} from "@/actions/cache";
+import {getResourceUrl} from "@/lib/get-resource-url";
 
 export default async () => {
   const resources = await getPaginatedResources();
@@ -73,7 +67,7 @@ export default async () => {
               {resources.items.map(({ id, collectionId, resource }) => (
                 <CarouselItem className={"size-full p-0"} key={id}>
                   <Image
-                    src={`http://127.0.0.1:8090/api/files/${collectionId}/${id}/${resource}`}
+                    src={getResourceUrl(resource, id, collectionId)}
                     alt={"gradient"}
                     className={"size-full"}
                     width={1920}
