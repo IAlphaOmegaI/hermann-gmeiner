@@ -4,11 +4,9 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import "./globals.css";
-import { PostHogProvider } from "@/components/posthog-provider";
 import { Toaster } from "@/components/ui/toaster";
 import type { LayoutProps } from "@/types";
 import { ViewTransitions } from "next-view-transitions";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NavigationMenu } from "@/components/navigation-menu";
 import dynamic from "next/dynamic";
 import localFont from "next/font/local";
@@ -57,18 +55,11 @@ const ClashDisplay = localFont({
   variable: "--font-clash-display",
 });
 
-const PostHogPageView = dynamic(
-  () => import("../components/posthog-page-view"),
-  {
-    ssr: false,
-  },
-);
 
 export default ({ children }: LayoutProps) => {
   return (
     <ViewTransitions>
       <html lang="en" suppressHydrationWarning>
-        <PostHogProvider>
           <body
             className={cn(
               "bg-background",
@@ -89,9 +80,6 @@ export default ({ children }: LayoutProps) => {
               </ThemeProvider>
             </main>
           </body>
-          <PostHogPageView />
-        </PostHogProvider>
-        <SpeedInsights />
       </html>
     </ViewTransitions>
   );

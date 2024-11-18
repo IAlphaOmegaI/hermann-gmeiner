@@ -4,7 +4,7 @@ import type { Resource } from "@/actions/types/resource";
 import type { Pager } from "@/actions/types/pager";
 import type { Post } from "@/actions/types/post";
 
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
 
 export const getPaginatedResources = async () => {
   return await pb
@@ -21,6 +21,7 @@ export const getPaginatedPosts = async (
   return await pb.collection("posts").getList<Post>(page, pageSize, {
     sort: "created",
     order: "desc",
+      requestKey: null,
   });
 };
 

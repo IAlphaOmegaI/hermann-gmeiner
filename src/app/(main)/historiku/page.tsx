@@ -1,20 +1,15 @@
-import { getPost } from "@/actions/blog";
-import { CustomMDX } from "@/components/mdx";
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import {CustomMDX} from "@/components/mdx";
+import type {Metadata} from "next";
+import {notFound} from "next/navigation";
 import Script from "next/script";
+import {getPostById} from "@/actions/cache";
 
 export async function generateMetadata(): Promise<Metadata | undefined> {
-  const post = getPost("historia-e-shkolles");
+  const post = await getPostById("3thilomyccwai0p");
 
-  const {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata;
-  const openGraphImageURL = image
-    ? `https://www.hermanngminer.edu.al${image}`
+  const { title, created, summary: description, thumbnail } = post;
+  const openGraphImageURL = thumbnail
+    ? `https://www.hermanngminer.edu.al${thumbnail}`
     : `https://www.hermanngminer.edu.al/og?title=${title}`;
 
   return {
@@ -24,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata | undefined> {
       title,
       description,
       type: "article",
-      publishedTime,
-      url: `https://www.hermanngminer.edu.al/blog/${post.slug}`,
+      publishedTime: created,
+      url: `https://www.hermanngminer.edu.al/blog/${post.id}`,
       images: [
         {
           url: openGraphImageURL,
@@ -42,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata | undefined> {
 }
 
 export default async () => {
-  const post = getPost("historia-e-shkolles");
+  const post = await getPostById("3thilomyccwai0p");
   if (!post) notFound();
 
   return (
@@ -51,14 +46,14 @@ export default async () => {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "BlogPosting",
-          headline: post.metadata.title,
-          datePublished: post.metadata.publishedAt,
-          dateModified: post.metadata.publishedAt,
-          description: post.metadata.summary,
-          image: post.metadata.image
-            ? `https://www.hermanngminer.edu.al${post.metadata.image}`
-            : `https://www.hermanngminer.edu.al/og?title=${post.metadata.title}`,
-          url: `https://www.hermanngminer.edu.al/blog/${post.slug}`,
+          headline: post.title,
+          datePublished: post.created,
+          dateModified: post.created,
+          description: post.summary,
+          image: post.thumbnail
+            ? `https://www.hermanngminer.edu.al${post.thumbnail}`
+            : `https://www.hermanngminer.edu.al/og?title=${post.title}`,
+          url: `https://www.hermanngminer.edu.al/blog/${post.id}`,
           author: {
             "@type": "Person",
             name: "Hermann Gmeiner",
