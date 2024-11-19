@@ -2,11 +2,10 @@ import Image from "next/image";
 import {BannerAnimation} from "@/components/banner-animation";
 import {PartnerCarousel} from "@/components/partner-carousel";
 import {StatisticsStrip} from "@/components/statistics-strip";
-import {SplineScene} from "@/components/spline-scene";
 import {AnnouncementsView} from "@/components/announcments-view";
 import {type UpcomingEvent, UpcomingEvents,} from "@/components/upcoming-events";
 import {Carousel, CarouselContent, CarouselItem,} from "@/components/ui/carousel";
-import {getPaginatedResources} from "@/actions/cache";
+import {getPaginatedResources} from "@/actions/resources";
 import {getResourceUrl} from "@/lib/get-resource-url";
 
 export default async () => {
@@ -110,10 +109,9 @@ export default async () => {
               "radial-gradient(circle at bottom center, black 0%, transparent 70%)",
           }}
         />
-        <SplineScene
-          scene={"/3D/globe.splinecode"}
-          fallback={"/images/globe.png"}
-        />
+        {/*<Suspense>*/}
+        {/*  <SplineScene scene={asset.resource} fallback={"/images/globe.png"} />*/}
+        {/*</Suspense>*/}
         <div className={"absolute z-50 inset-x-0 bottom-16 px-24"}>
           <h4 className={"text-lg text-white text-shadow shadow-white/40 "}>
             Where curiosity meets excellence, and every student's potential is

@@ -1,19 +1,18 @@
-import { ModeToggle } from "@/components/mode-toggle";
+import {ModeToggle} from "@/components/mode-toggle";
 import {
+  NavigationMenu as NavigationMenuPrimitive,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenu as NavigationMenuPrimitive,
-  NavigationMenuTrigger,
+  NavigationMenuList, NavigationMenuTrigger,
   navigationMenuTriggerVariants,
 } from "@/components/ui/navigation-menu";
-import { HomeIcon } from "@/icons";
-import type { Route } from "@/types/navigation";
-import type { PropsWithClassName } from "@/types/components";
-import { cn } from "@/utils";
-import { NavigationMenuLink } from "@radix-ui/react-navigation-menu";
+import {HomeIcon} from "@/icons";
+import type {Route} from "@/types/navigation";
+import type {PropsWithClassName} from "@/types/components";
+import {cn} from "@/utils";
+import {NavigationMenuLink} from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
-import type { ElementRef, LegacyRef, PropsWithChildren } from "react";
+import type {ElementRef, LegacyRef, PropsWithChildren} from "react";
 
 const ROUTES: Route[] = [
   {

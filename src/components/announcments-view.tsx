@@ -1,7 +1,3 @@
-import { cn } from "@/utils";
-import type { PropsWithClassName } from "@/types/components";
-import Link from "next/link";
-import { ChevronLeftIcon, ChevronRightIcon, LinkIcon } from "@/icons";
 import {
   Carousel,
   CarouselContent,
@@ -9,9 +5,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { getPaginatedPosts } from "@/actions/cache";
+import { ChevronLeftIcon, ChevronRightIcon, LinkIcon } from "@/icons";
+
+import Link from "next/link";
 import type { Post } from "@/actions/types/post";
+import type { PropsWithClassName } from "@/types/components";
+import { cn } from "@/utils";
+import { getPaginatedPosts } from "@/actions/posts";
 import { getResourceUrl } from "@/lib/get-resource-url";
+
 
 export const AnnouncementsView = async () => {
   const posts = await getPaginatedPosts({ page: 1, pageSize: 9 });

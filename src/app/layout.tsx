@@ -1,13 +1,14 @@
-import {ThemeProvider} from "@/components/theme-provider";
-import {cn} from "@/utils";
-import {GeistMono} from "geist/font/mono";
-import {GeistSans} from "geist/font/sans";
-import type {Metadata} from "next";
 import "./globals.css";
-import {Toaster} from "@/components/ui/toaster";
-import type {LayoutProps} from "@/types/navigation";
-import {ViewTransitions} from "next-view-transitions";
-import {NavigationMenu} from "@/components/navigation-menu";
+
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { LayoutProps } from "@/types/navigation";
+import type { Metadata } from "next";
+import { NavigationMenu } from "@/components/navigation-menu";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
+import { ViewTransitions } from "next-view-transitions";
+import { cn } from "@/utils";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
