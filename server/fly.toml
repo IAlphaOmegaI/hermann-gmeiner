@@ -1,23 +1,38 @@
-app = "white-wave-7991"
-primary_region = "ams"
+# fly.toml app configuration file generated for hermanngmeiner on 2024-11-20T06:34:53-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-[build.args]
-PB_VERSION = "0.19.0"
-APP_URL = "https://hermanngmeiner.edu.al"
+app = 'hermanngmeiner'
+primary_region = 'ams'
 
-[http_service]
-auto_start_machines = true
-auto_stop_machines = false
-force_https = true
-internal_port = 8_080
-min_machines_running = 1
-processes = [ "app" ]
-
-[http_service.concurrency]
-hard_limit = 550
-soft_limit = 500
-type = "requests"
+[build]
 
 [[mounts]]
-destination = "/pb/pb_data"
-source = "pb_data"
+source = 'pb_data'
+destination = '/pb/pb_data'
+
+
+[services]
+internal_port = 22 # SSH service runs on port 22 inside the container
+protocol = "tcp"
+[[services.ports]]
+port = 2222 # Publicly accessible port
+
+[http_service]
+internal_port = 8080
+force_https = true
+auto_stop_machines = 'off'
+auto_start_machines = true
+min_machines_running = 1
+processes = ['app']
+
+[http_service.concurrency]
+type = 'requests'
+hard_limit = 550
+soft_limit = 500
+
+[[vm]]
+memory = '1gb'
+cpu_kind = 'shared'
+cpus = 1

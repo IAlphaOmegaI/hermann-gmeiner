@@ -7,6 +7,7 @@ import {type UpcomingEvent, UpcomingEvents,} from "@/components/upcoming-events"
 import {getPaginatedResources} from "@/actions/resources";
 import {SplineScene} from "@/components/spline-scene";
 import {BannerCarousel} from "@/components/banner-carousel";
+import {Suspense} from "react";
 
 export default async () => {
   const resources = await getPaginatedResources();
@@ -56,7 +57,7 @@ export default async () => {
             </div>
           }
         >
-          <BannerCarousel resources={resources.items}/>
+          <BannerCarousel resources={resources.items} />
         </BannerAnimation>
       </section>
       <section
@@ -67,7 +68,9 @@ export default async () => {
         <PartnerCarousel />
         <StatisticsStrip />
       </section>
-      <AnnouncementsView />
+      <Suspense>
+        <AnnouncementsView />
+      </Suspense>
       <section className={"relative size-full mt-24"}>
         <Image
           src={"/images/background.jpg"}
