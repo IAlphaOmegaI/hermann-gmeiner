@@ -4,10 +4,9 @@ import {PartnerCarousel} from "@/components/partner-carousel";
 import {StatisticsStrip} from "@/components/statistics-strip";
 import {AnnouncementsView} from "@/components/announcments-view";
 import {type UpcomingEvent, UpcomingEvents,} from "@/components/upcoming-events";
-import {Carousel, CarouselContent, CarouselItem,} from "@/components/ui/carousel";
 import {getPaginatedResources} from "@/actions/resources";
-import {getResourceUrl} from "@/lib/get-resource-url";
 import {SplineScene} from "@/components/spline-scene";
+import {BannerCarousel} from "@/components/banner-carousel";
 
 export default async () => {
   const resources = await getPaginatedResources();
@@ -62,32 +61,7 @@ export default async () => {
             </div>
           }
         >
-          <Carousel>
-            <CarouselContent className={"relative *:ml-0"}>
-              {resources.items.map(({ id, collectionId, resource, type }) => (
-                <CarouselItem className={"size-full p-0"} key={id}>
-                  {type === "image" ? (
-                    <Image
-                      src={getResourceUrl(resource, id, collectionId)}
-                      alt={"gradient"}
-                      className={"size-full"}
-                      width={1920}
-                      height={1080}
-                    />
-                  ) : (
-                    <video
-                      src={getResourceUrl(resource, id, collectionId)}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className={"size-full"}
-                    />
-                  )}
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+          <BannerCarousel resources={resources.items} />
         </BannerAnimation>
       </section>
       <section
