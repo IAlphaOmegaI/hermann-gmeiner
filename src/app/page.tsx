@@ -7,6 +7,7 @@ import {type UpcomingEvent, UpcomingEvents,} from "@/components/upcoming-events"
 import {Carousel, CarouselContent, CarouselItem,} from "@/components/ui/carousel";
 import {getPaginatedResources} from "@/actions/resources";
 import {getResourceUrl} from "@/lib/get-resource-url";
+import {SplineScene} from "@/components/spline-scene";
 
 export default async () => {
   const resources = await getPaginatedResources();
@@ -63,15 +64,26 @@ export default async () => {
         >
           <Carousel>
             <CarouselContent className={"relative *:ml-0"}>
-              {resources.items.map(({ id, collectionId, resource }) => (
+              {resources.items.map(({ id, collectionId, resource, type }) => (
                 <CarouselItem className={"size-full p-0"} key={id}>
-                  <Image
-                    src={getResourceUrl(resource, id, collectionId)}
-                    alt={"gradient"}
-                    className={"size-full"}
-                    width={1920}
-                    height={1080}
-                  />
+                  {type === "image" ? (
+                    <Image
+                      src={getResourceUrl(resource, id, collectionId)}
+                      alt={"gradient"}
+                      className={"size-full"}
+                      width={1920}
+                      height={1080}
+                    />
+                  ) : (
+                    <video
+                      src={getResourceUrl(resource, id, collectionId)}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className={"size-full"}
+                    />
+                  )}
                 </CarouselItem>
               ))}
             </CarouselContent>
@@ -109,9 +121,10 @@ export default async () => {
               "radial-gradient(circle at bottom center, black 0%, transparent 70%)",
           }}
         />
-        {/*<Suspense>*/}
-        {/*  <SplineScene scene={asset.resource} fallback={"/images/globe.png"} />*/}
-        {/*</Suspense>*/}
+        <SplineScene
+          scene={"/3D/computer.splinecode"}
+          fallback={"/images/globe.png"}
+        />
         <div className={"absolute z-50 inset-x-0 bottom-16 px-24"}>
           <h4 className={"text-lg text-white text-shadow shadow-white/40 "}>
             Where curiosity meets excellence, and every student's potential is

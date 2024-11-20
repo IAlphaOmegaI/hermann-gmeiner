@@ -1,10 +1,10 @@
 import type { DynamicRouteProps } from "@/types/navigation";
-import { revalidateTag } from "next/cache";
+import { expireTag } from "next/cache";
 
 export const POST = async (
   req: Request,
-  { params }: DynamicRouteProps<"id">,
+  { params }: DynamicRouteProps,
 ) => {
   const { id } = await params;
-  revalidateTag(`posts-${id}`);
+  expireTag(`posts-${id}`);
 };

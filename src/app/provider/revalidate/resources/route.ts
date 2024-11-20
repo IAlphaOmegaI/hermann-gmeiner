@@ -1,5 +1,5 @@
-import { revalidateTag } from "next/cache";
+import { expireTag } from "next/cache";
 
 export const POST = (req: Request) => {
-  revalidateTag("posts");
+  expireTag("posts");
 };
