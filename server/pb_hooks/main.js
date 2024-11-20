@@ -6,3 +6,4 @@ onRecordAfterCreateRequest(() => {
     method: "POST",
   });
 }, "landing_page_resources");
+
