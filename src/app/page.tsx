@@ -121,10 +121,6 @@ export default async () => {
               "radial-gradient(circle at bottom center, black 0%, transparent 70%)",
           }}
         />
-        <SplineScene
-          scene={"/3D/computer.splinecode"}
-          fallback={"/images/globe.png"}
-        />
         <div className={"absolute z-50 inset-x-0 bottom-16 px-24"}>
           <h4 className={"text-lg text-white text-shadow shadow-white/40 "}>
             Where curiosity meets excellence, and every student's potential is
