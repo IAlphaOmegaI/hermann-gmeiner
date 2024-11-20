@@ -45,23 +45,18 @@ export default async () => {
           titleComponent={
             <div className={"flex flex-col items-center"}>
               <h2 className="text-lg font-semibold text-primary">
-                Shkolla profesionale me drejtim software:
+                Shkolla e mesme profesionale:
               </h2>
               <h1 className="text-8xl -mt-2 font-semibold text-foreground font-header">
                 Hermann Gmeiner
               </h1>
-              <p className="text-sm text-gray-600">
-                Where curiosity meets excellence, and every student's potential
-                is nurtured to bloom. Where curiosity meets excellence, and
-                every student's potential is nurtured to bloom. Where curiosity
-                meets excellence, and every student's potential is nurtured to
-                bloom. Where curiosity meets excellence, and every student's
-                potential is nurtured to bloom.
-              </p>
+              <h2 className="text-lg font-semibold text-primary">
+                me drejtim Inxhinieri Informatike Softwaresh
+              </h2>
             </div>
           }
         >
-          <BannerCarousel resources={resources.items} />
+          <BannerCarousel resources={resources.items}/>
         </BannerAnimation>
       </section>
       <section

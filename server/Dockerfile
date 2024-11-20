@@ -1,6 +1,7 @@
 FROM alpine:latest
 
 ARG PB_VERSION=0.19.0
+ARG APP_URL=https://hermanngmeiner.edu.al
 
 RUN apk add --no-cache \
     unzip \
