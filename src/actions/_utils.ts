@@ -20,6 +20,7 @@ export const withPocketBase = <
   fn: F,
 ): ((...args: ExtractFunctionParams<F>) => ReturnType<F>) => {
   return (...args: ExtractFunctionParams<F>) => {
+
     const pb = getPocketBase();
     return fn(pb, ...args) as ReturnType<F>;
   };

@@ -1,4 +1,4 @@
-onModelAfterCreate(() => {
+onRecordAfterCreateRequest(() => {
   console.log("model created");
   console.log(`${process.env.APP_URL}/provider/revalidate/resources`);
   $http.send({
