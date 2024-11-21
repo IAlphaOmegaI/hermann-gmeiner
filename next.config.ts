@@ -21,7 +21,7 @@ const config = {
       },
       {
         protocol: "https",
-        hostname: "white-wave-7991.fly.dev",
+        hostname: "hermanngmeiner.fly.dev",
         port: "",
         pathname: "/api/files/**",
       },
