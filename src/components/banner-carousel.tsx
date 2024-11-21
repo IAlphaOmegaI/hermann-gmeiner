@@ -1,9 +1,15 @@
 "use client";
-import {Carousel, CarouselContent, CarouselItem,} from "@/components/ui/carousel";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import {getResourceUrl} from "@/lib/get-resource-url";
-import type {Resource} from "@/actions/types/resource";
+import type { Resource } from "@/actions/types/resource";
+import { getResourceUrl } from "@/lib/get-resource-url";
 
 export type BannerCarouselProps = {
   resources: Resource[];
@@ -13,7 +19,7 @@ export const BannerCarousel = ({ resources }: BannerCarouselProps) => {
     <Carousel
       plugins={[
         Autoplay({
-          delay: 1000,
+          delay: 3000,
           playOnInit: true,
           stopOnMouseEnter: false,
           stopOnFocusIn: false,

@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const config = {
+export default {
   experimental: {
     dynamicIO: true,
     ppr: true,
@@ -28,5 +28,3 @@ const config = {
     ],
   },
 } satisfies NextConfig;
-
-export default config;
