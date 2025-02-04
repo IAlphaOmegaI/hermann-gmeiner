@@ -13,7 +13,7 @@ import type { PropsWithClassName } from "@/types/components";
 import { cn } from "@/utils";
 import { getPaginatedPosts } from "@/actions/posts";
 import { getResourceUrl } from "@/lib/get-resource-url";
-
+import { format } from "date-fns";
 
 export const AnnouncementsView = async () => {
   const posts = await getPaginatedPosts({ page: 1, pageSize: 9 });
@@ -25,10 +25,10 @@ export const AnnouncementsView = async () => {
         }
       >
         <div className={"p-12"}>
-          <div>
+          <div className={"h-full flex flex-col gap-4"}>
             <h1
               className={
-                "text-5xl text-foreground font-header font-semibold flex items-center gap-2"
+                "text-3xl flex items-center md:text-5xl text-foreground font-header font-semibold flex items-center gap-2"
               }
             >
               Të fundit
@@ -36,7 +36,7 @@ export const AnnouncementsView = async () => {
                 <CarouselPrevious
                   size={"icon"}
                   color={"primary"}
-                  className={"rounded-full size-8 static"}
+                  className={"rounded-full size-8 static translate-y-0"}
                   variant={"soft"}
                 >
                   <ChevronLeftIcon className={"size-5"} />
@@ -44,14 +44,14 @@ export const AnnouncementsView = async () => {
                 <CarouselNext
                   size={"icon"}
                   color={"primary"}
-                  className={"rounded-full size-8 static"}
+                  className={"rounded-full size-8 static translate-y-0"}
                   variant={"soft"}
                 >
                   <ChevronRightIcon className={"size-5"} />
                 </CarouselNext>
               </div>
             </h1>
-            <p>
+            <p className={"text-sm md:text-base"}>
               Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK
               (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014.
               <Link
@@ -64,10 +64,10 @@ export const AnnouncementsView = async () => {
             </p>
           </div>
         </div>
-        <CarouselContent className={"size-full grow"}>
-          {Array.from({ length: 2 }).map((_, i) => (
+        <CarouselContent className={"size-full grow *:ml-0 *:pr-0"}>
+          {Array.from({ length: 1 }).map((_, i) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>s
-            <CarouselItem key={i} className={"size-full"}>
+            <CarouselItem key={i} className={"size-full pl-0"}>
               <AnnouncementSection
                 posts={posts.items.slice(i * 3, (i + 1) * 3)}
               />
@@ -86,15 +86,15 @@ const AnnouncementSection = ({ posts }: AnnouncementSectionProps) => {
   return (
     <section
       className={
-        "grid grid-cols-3 grid-rows-2 size-full divide-x-[1.5px] divide-y-[1.5px] divide-border py-[1.5px] px-8  grow"
+        "grid grid-cols-3 grid-rows-2 size-full divide-x-[1.5px] divide-y-[1.5px] divide-border py-[1.5px] md:px-8  grow"
       }
     >
-      <AnnouncementCard {...posts[0]} className={"col-span-2 row-span-2"} />
-      <AnnouncementCard
-        {...posts[1]}
-        className={"col-span-1 row-span-1 !border-t-0"}
-      />
-      <AnnouncementCard {...posts[2]} className={"col-span-1 row-span-1"} />
+      <AnnouncementCard {...posts[0]} className={"col-span-full row-span-full md:col-span-2 md:row-span-2"} />
+      {/*<AnnouncementCard*/}
+      {/*  {...posts[1]}*/}
+      {/*  className={"col-span-1 row-span-1 !border-t-0"}*/}
+      {/*/>*/}
+      {/*<AnnouncementCard {...posts[2]} className={"col-span-1 row-span-1"} />*/}
     </section>
   );
 };
@@ -106,25 +106,34 @@ const AnnouncementCard = ({
   id,
   collectionId,
   summary,
+  created,
+  tags,
 }: PropsWithClassName<Post>) => {
   return (
-    <div className={cn("flex flex-col gap-4 h-full p-4", className)}>
-      <div className={"relative w-full grow"}>
-        <img
-          src={getResourceUrl(thumbnail, id, collectionId)}
-          alt={title}
-          className={
-            "object-contain object-cover rounded-xl absolute size-full inset-0"
-          }
-        />
+    <Link
+      href={`blog/${id}`}
+      className={cn("flex flex-col gap-4 h-full p-4", className)}
+    >
+      <div className={cn("flex flex-col gap-4 h-full p-4", className)}>
+        <div className={"relative w-full grow"}>
+          <img
+            src={getResourceUrl(thumbnail, id, collectionId)}
+            alt={title}
+            className={
+              "object-contain object-cover rounded-xl absolute size-full inset-0"
+            }
+          />
+        </div>
+        <div className={"h-20"}>
+          <p className="font-medium text-2xl tracking-tight line-clamp-1">
+            {title}
+          </p>
+          <p className="h-6 text-muted-foreground text-xs pl-0.5">
+            {format(new Date(created), "dd MMM yyyy")}
+          </p>
+          <p className="h-6 text-muted-foreground text-xs">{summary}</p>
+        </div>
       </div>
-      <div className={"h-20"}>
-        <p className="font-medium text-2xl tracking-tight line-clamp-1">
-          {title}
-        </p>
-        {/*<p className="h-6 text-muted-foreground text-xs">{format(created, "dd MMM yyyy")}</p>*/}
-        <p className="h-6 text-muted-foreground text-xs">{summary}</p>
-      </div>
-    </div>
+    </Link>
   );
 };

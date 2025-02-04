@@ -14,7 +14,6 @@ export const getPaginatedPosts = async (
   return await pb.collection("posts").getList<Post>(page, pageSize, {
     sort: "created",
     order: "desc",
-    requestKey: null,
   });
 };
 
@@ -33,5 +32,5 @@ export const getPostById = async (id: string) => {
 
   const pb = getPocketBase();
 
-  return pb.collection("posts").getOne<Post>(id, { requestKey: null });
+  return pb.collection("posts").getOne<Post>(id);
 };

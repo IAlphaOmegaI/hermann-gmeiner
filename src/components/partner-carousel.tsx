@@ -22,11 +22,11 @@ const PARTNERS = [
 export const PartnerCarousel = ({ className }: PropsWithClassName) => {
   return (
     <section className={cn("w-full flex flex-col gap-4 px-12 py-6", className)}>
-      <h3 className={"text-5xl font-header text-foreground font-semibold"}>
+      <h3 className={"text-3xl md:text-5xl font-header text-foreground font-semibold"}>
         Our Esteemed Partners
       </h3>
-      <div className={"flex items-center gap-4 w-full"}>
-        <div className={"w-1/5"}>
+      <div className={"flex items-center gap-4 w-full md:flex-row flex-col"}>
+        <div className={"w-full md:w-1/5"}>
           <p className="text-sm text-gray-600">
             Where curiosity meets excellence, and every student's potential is
             nurtured to bloom. Where curiosity meets excellence, and every
@@ -44,7 +44,7 @@ export const PartnerCarousel = ({ className }: PropsWithClassName) => {
             {PARTNERS.map((partner) => (
               <CarouselItem
                 key={partner}
-                className={"basis-1/5 relative h-24 px-6"}
+                className={"md:basis-1/3 basis-1/2 lg:basis-1/5 relative h-24 px-6"}
               >
                 <div className={"size-full relative"}>
                   <Image

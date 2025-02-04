@@ -1,3 +1,4 @@
+"use client";
 import {ModeToggle} from "@/components/mode-toggle";
 import {
   NavigationMenu as NavigationMenuPrimitive,
@@ -13,6 +14,7 @@ import {cn} from "@/utils";
 import {NavigationMenuLink} from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import type {ElementRef, LegacyRef, PropsWithChildren} from "react";
+import {useMediaQuery} from "@/hooks/use-media-query";
 
 const ROUTES: Route[] = [
   {
@@ -102,6 +104,8 @@ const ROUTES: Route[] = [
 ];
 
 export const NavigationMenu = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  if (isMobile) return null;
   return (
     <div
       className={

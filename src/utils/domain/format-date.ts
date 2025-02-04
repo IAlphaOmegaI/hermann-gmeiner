@@ -7,6 +7,7 @@ import {
   subDays,
 } from "date-fns";
 
+
 export const formatDate = (date: Date | string) => {
   const today = startOfToday();
   const yesterday = startOfYesterday();

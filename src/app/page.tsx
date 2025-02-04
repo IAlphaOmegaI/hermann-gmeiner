@@ -45,13 +45,13 @@ export default async () => {
         <BannerAnimation
           titleComponent={
             <div className={"flex flex-col items-center"}>
-              <h2 className="text-lg font-semibold text-primary">
+              <h2 className="text-xs md:text-lg font-semibold text-primary">
                 Shkolla e mesme profesionale:
               </h2>
-              <h1 className="text-8xl -mt-2 font-semibold text-foreground font-header">
+              <h1 className="text-6xl md:text-8xl -mt-2 font-semibold text-foreground font-header">
                 Hermann Gmeiner
               </h1>
-              <h2 className="text-lg font-semibold text-primary">
+              <h2 className="text-xs md:text-lg  font-semibold text-primary">
                 me drejtim Inxhinieri Informatike Softwaresh
               </h2>
             </div>
@@ -62,7 +62,7 @@ export default async () => {
       </section>
       <section
         className={
-          "mt-96 py-[1.5px] bg-border flex flex-wrap gap-[1.5px] *:bg-background"
+          "mt-20 md:mt-44 lg:mt-96 py-[1.5px] bg-border flex flex-wrap gap-[1.5px] *:bg-background"
         }
       >
         <PartnerCarousel />
@@ -71,7 +71,7 @@ export default async () => {
       <Suspense>
         <AnnouncementsView />
       </Suspense>
-      <section className={"relative size-full mt-24"}>
+      <section className={"relative size-full md:mt-24"}>
         <Image
           src={"/images/background.jpg"}
           alt={"gradient"}
@@ -97,13 +97,13 @@ export default async () => {
           scene={"https://prod.spline.design/QlrATUcJYh6nKxUv/scene.splinecode"}
           fallback={"/images/globe.png"}
         />
-        <div className={"absolute z-50 inset-x-0 bottom-16 px-24"}>
-          <h4 className={"text-lg text-white text-shadow shadow-white/40 "}>
+        <div className={"absolute z-50 inset-x-0 bottom-16 px-6 md:px-24"}>
+          <h4 className={"text-sm md:text-lg text-white text-shadow shadow-white/40"}>
             Where curiosity meets excellence, and every student's potential is
           </h4>
           <h1
             className={
-              "-ml-2.5 font-medium text-white text-shadow shadow-white/40 text-8xl font-header"
+              "md:-ml-2.5 font-medium text-white text-shadow shadow-white/40 text-5xl md:text-8xl font-header"
             }
           >
             Shkolla 'Hermann Gmeiner'
@@ -117,7 +117,9 @@ export default async () => {
         />
       </section>
       {/*<EventsCalendar />*/}
-      <UpcomingEvents events={UPCOMING_EVENTS} />
+
+
+      <UpcomingEvents events={UPCOMING_EVENTS}/>
     </section>
   );
 };
@@ -126,14 +128,14 @@ const UPCOMING_EVENTS: UpcomingEvent[] = [
   {
     title: "Shkolla 'Hermann Gmeiner' e përfundimit",
     description:
-      "Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014. Programet e shkollës TIK “HERMANN GMEINER”, bazohen tek modeli dhe profili i shkollës austriake, në përgatitjen e programuesve në informatikë.",
+        "Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014. Programet e shkollës TIK “HERMANN GMEINER”, bazohen tek modeli dhe profili i shkollës austriake, në përgatitjen e programuesve në informatikë.",
     date: "2024-09-21T07:50:39.389Z",
     themes: ["Shkolla"],
   },
   {
     title: "Partneritetet tona me Industrinë",
     description:
-      "Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014. Programet e shkollës TIK “HERMANN GMEINER”, bazohen tek modeli dhe profili i shkollës austriake, në përgatitjen e programuesve në informatikë.",
+        "Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014. Programet e shkollës TIK “HERMANN GMEINER”, bazohen tek modeli dhe profili i shkollës austriake, në përgatitjen e programuesve në informatikë.",
     date: "2024-09-17T07:50:39.389Z",
     themes: ["Shkolla"],
   },

@@ -6,7 +6,7 @@ onModelAfterCreate(() => {
   });
 }, "landing_page_resources");
 
-onModelAfterCreate((event) => {
+onModelAfterCreate(() => {
   const APP_URL = "https://hermanngmeiner.edu.al";
   $http.send({
     url: `${APP_URL}/provider/revalidate/posts`,

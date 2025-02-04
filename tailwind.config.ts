@@ -2,6 +2,16 @@ import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 import typography from "@tailwindcss/typography";
 import plugin from "tailwindcss/plugin";
+
+export const screens = {
+  "2xs": "320px",
+  xs: "400px",
+  sm: "640px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1280px",
+  "2xl": "1536px",
+} as const;
 export default {
   darkMode: "class",
   content: ["./src/**/*.{ts,tsx}"],
@@ -11,6 +21,7 @@ export default {
       sans: ["var(--font-geist-sans)"],
       mono: ["var(--font-geist-mono)"],
     },
+    screens,
     extend: {
       textShadow: {
         DEFAULT: "0 2px 4px var(--tw-shadow-color)",
@@ -127,3 +138,5 @@ export default {
     }),
   ],
 } satisfies Config;
+
+

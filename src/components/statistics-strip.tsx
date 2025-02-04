@@ -74,14 +74,14 @@ export const StatisticsStrip = () => {
   return (
     <section
       className={
-        "flex divide-accent !bg-border *:bg-background gap-[1.5px] w-full"
+        "md:flex-row flex-col flex divide-accent !bg-border *:bg-background gap-[1.5px] w-full"
       }
     >
       <div className={"flex gap-4 flex-col py-6 px-12"}>
         <div className={"w-full"}>
           <h3
             className={
-              "text-5xl font-header text-foreground font-semibold mb-6"
+              "text-3xl md:text-5xl font-header text-foreground font-semibold mb-6"
             }
           >
             Statistics
@@ -112,11 +112,11 @@ export const StatisticsStrip = () => {
           </BarChart>
         </ChartContainer>
       </div>
-      <div className={"flex gap-4 py-6 px-12"}>
+      <div className={"flex md:flex-row flex-col gap-4 py-6 px-12"}>
         <div className={"w-full"}>
           <h3
             className={
-              "text-5xl font-header text-foreground font-semibold mb-6"
+              "text-3xl md:text-5xl font-header text-foreground font-semibold mb-6"
             }
           >
             Statistics
