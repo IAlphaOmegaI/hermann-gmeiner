@@ -1,7 +1,7 @@
 "use server";
 import type {Resource} from "./types/resource";
 import {unstable_cacheTag as setCacheTag} from "next/cache";
-import {getPocketBase} from "./_utils";
+import {getPocketBase} from "./pocketbase";
 
 export const getPaginatedResources = async () => {
   "use cache";

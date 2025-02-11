@@ -1,4 +1,4 @@
-import {getPocketBase} from "@/actions/_utils";
+import {getPocketBase} from "@/actions/pocketbase";
 
 export const getPaginatedJobOffers = () => {
 

@@ -1,7 +1,7 @@
-import type {Pager} from "@/actions/types/pager";
+import type {Pager} from "@/actions/types/utilities/pager";
 import type {Post} from "@/actions/types/post";
 import {unstable_cacheTag as setCacheTag} from "next/cache";
-import {getPocketBase} from "./_utils";
+import {getPocketBase} from "./pocketbase";
 
 export const getPaginatedPosts = async (
   { page, pageSize }: Pager = { page: 1, pageSize: 10 },
