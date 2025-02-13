@@ -6,5 +6,4 @@ export type DevelopmentUnitHead = SystemFields & {
     head: string;
     description: string;
     rank: number;
-    user: User
 };
