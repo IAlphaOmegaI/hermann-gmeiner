@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 export default {
   experimental: {
-    dynamicIO: true,
+    useCache: true,
     ppr: true,
   },
   images: {

@@ -1,7 +1,16 @@
 import type {DynamicRouteProps} from "@/types/navigation";
-import {getPostById} from "@/actions/posts";
+import {getAllPosts, getPostById} from "@/actions/posts";
 import {Badge} from "@/components/ui/badge";
 import {format} from "date-fns";
+import {connection} from "next/server";
+
+export const generateStaticParams = async () => {
+    const blogs = await getAllPosts();
+    return blogs.map((blog) => ({
+        id: blog.id
+    }));
+}
+export const dynamicParams = true;
 
 export default async ({params}: DynamicRouteProps) => {
     const {id} = await params;

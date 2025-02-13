@@ -7,7 +7,7 @@ export const getPaginatedResources = async () => {
   "use cache";
   setCacheTag("resources");
 
-  const pb = getPocketBase();
+  const pb = await getPocketBase();
 
   return await pb
     .collection("landing_page_resources")
@@ -20,7 +20,8 @@ export const getPaginatedResources = async () => {
 export const getMainAsset = async () => {
   "use cache";
   setCacheTag("resources");
-  const pb = getPocketBase();
+
+  const pb = await getPocketBase();
 
   return await pb
     .collection("landing_page_resources")

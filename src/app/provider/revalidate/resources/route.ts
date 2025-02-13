@@ -1,4 +1,4 @@
-import { expireTag } from "next/cache";
+import { unstable_expireTag as expireTag } from "next/cache";;
 
 export const POST = (req: Request) => {
   expireTag("posts");
