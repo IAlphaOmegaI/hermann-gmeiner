@@ -89,12 +89,13 @@ const AnnouncementSection = ({ posts }: AnnouncementSectionProps) => {
         "grid grid-cols-3 grid-rows-2 size-full divide-x-[1.5px] divide-y-[1.5px] divide-border py-[1.5px] md:px-8  grow"
       }
     >
-      <AnnouncementCard {...posts[0]} className={"col-span-full row-span-full md:col-span-2 md:row-span-2"} />
-      {/*<AnnouncementCard*/}
-      {/*  {...posts[1]}*/}
-      {/*  className={"col-span-1 row-span-1 !border-t-0"}*/}
-      {/*/>*/}
-      {/*<AnnouncementCard {...posts[2]} className={"col-span-1 row-span-1"} />*/}
+      <AnnouncementCard {...posts[0]} className={"col-span-full row-span-full md:col-span-2 md:row-span-2 !border-b-0"} />
+      <AnnouncementCard
+        {...posts[1]}
+        className={"col-span-1 row-span-1 !border-t-0 !border-r-0"}
+        showSummary={false}
+      />
+      <AnnouncementCard {...posts[2]} className={"col-span-1 row-span-1"} showSummary={false}/>
     </section>
   );
 };
@@ -108,7 +109,8 @@ const AnnouncementCard = ({
   summary,
   created,
   tags,
-}: PropsWithClassName<Post>) => {
+                            showSummary = true
+}: PropsWithClassName<Post> & {showSummary?: boolean}) => {
   return (
     <Link
       href={`blog/${id}`}
@@ -120,18 +122,18 @@ const AnnouncementCard = ({
             src={getResourceUrl(thumbnail, id, collectionId)}
             alt={title}
             className={
-              "object-contain object-cover rounded-xl absolute size-full inset-0"
+              "object-contain object-cover rounded-xl absolute size-full inset-0 "
             }
           />
         </div>
-        <div className={"h-20"}>
+        <div className={"h-fit"}>
           <p className="font-medium text-2xl tracking-tight line-clamp-1">
             {title}
           </p>
-          <p className="h-6 text-muted-foreground text-xs pl-0.5">
+          <p className="h-6 text-muted-foreground text-xs pl-0.5 ">
             {format(new Date(created), "dd MMM yyyy")}
           </p>
-          <p className="h-6 text-muted-foreground text-xs">{summary}</p>
+          {showSummary && <p className="h-6 text-muted-foreground text-xs line-clamp-3">{summary}</p>}
         </div>
       </div>
     </Link>

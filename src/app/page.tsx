@@ -3,7 +3,7 @@ import {BannerAnimation} from "@/components/banner-animation";
 import {PartnerCarousel} from "@/components/partner-carousel";
 import {StatisticsStrip} from "@/components/statistics-strip";
 import {AnnouncementsView} from "@/components/announcments-view";
-import {type UpcomingEvent, UpcomingEvents,} from "@/components/upcoming-events";
+import {UpcomingEvents} from "@/components/upcoming-events";
 import {getPaginatedResources} from "@/actions/resources";
 import {SplineScene} from "@/components/spline-scene";
 import {BannerCarousel} from "@/components/banner-carousel";
@@ -119,24 +119,9 @@ export default async () => {
       {/*<EventsCalendar />*/}
 
 
-      <UpcomingEvents events={UPCOMING_EVENTS}/>
+      <Suspense>
+      <UpcomingEvents/>
+      </Suspense>
     </section>
   );
 };
-
-const UPCOMING_EVENTS: UpcomingEvent[] = [
-  {
-    title: "Shkolla 'Hermann Gmeiner' e përfundimit",
-    description:
-        "Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014. Programet e shkollës TIK “HERMANN GMEINER”, bazohen tek modeli dhe profili i shkollës austriake, në përgatitjen e programuesve në informatikë.",
-    date: "2024-09-21T07:50:39.389Z",
-    themes: ["Shkolla"],
-  },
-  {
-    title: "Partneritetet tona me Industrinë",
-    description:
-        "Shkolla 'Hermann Gmeiner' është shkollë profesionale për TIK (Teknologji Informacioni dhe Komunikimi) e themeluar ne 2014. Programet e shkollës TIK “HERMANN GMEINER”, bazohen tek modeli dhe profili i shkollës austriake, në përgatitjen e programuesve në informatikë.",
-    date: "2024-09-17T07:50:39.389Z",
-    themes: ["Shkolla"],
-  },
-];
