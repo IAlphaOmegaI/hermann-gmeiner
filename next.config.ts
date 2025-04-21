@@ -3,14 +3,13 @@ import type { NextConfig } from "next";
 export default {
   experimental: {
     useCache: true,
-    ppr: true,
+    // ppr: true,
   },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "ictawards.org",
-        port: "",
         pathname: "/**",
       },
       {
@@ -22,7 +21,6 @@ export default {
       {
         protocol: "https",
         hostname: "hermanngmeiner.fly.dev",
-        port: "",
         pathname: "/api/files/**",
       },
     ],
